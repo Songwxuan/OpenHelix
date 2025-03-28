@@ -1,5 +1,4 @@
 # OpenHelix: An Open-source Dual-System VLA Model for Robotics Manipulation
-By [Can Cui*](https://cuixxx.github.io) and [Pengxiang Ding*](https://dingpx.github.io)
 
 This is our re-implementation of the [Helix](https://www.figure.ai/news/helix).
 
