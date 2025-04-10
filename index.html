@@ -43,24 +43,37 @@
             <p class="text-justify">
                 ROBOSE proposes a simple yet effective dual system for robot learning by hierarchically integrating a high-level Multimodal Large Language Model (MLLM) with a low-level policy model. Through pre-alignment, prompt tuning, and multimodal reasoning learning, ROBOSE significantly enhances generalization, reduces training cost, and achieves state-of-the-art results on challenging robot manipulation benchmarks such as CALVIN and CALVIN-D.
             </p>
+            <p style="text-align: center;"><img src="./assets/robose_teaser.jpg" class="img-responsive"></p>
+
+            <h3>Revisit</h3>
+            <p class="text-justify">
+                The results show that the current MLLM is insensitive to environmental changes, which is unexpected. Analysis of action token embeddings reveals that they mainly reflect instruction semantics, with little adaptation to visual input. For example, “right” consistently has a higher similarity than “left,” regardless of actual motion. This suggests the MLLM does not effectively leverage visual reasoning and instead passes static instruction semantics to the policy. Thus, current dual-system designs are flawed, as the MLLM’s visual guidance is not meaningfully transferred to the action policy—raising the question of whether a single LLM could achieve similar performance.
+            </p>
+            <p style="text-align: center;"><img src="./assets/finding.jpg" class="img-responsive"></p>
 
             <h3>Approach</h3>
             <p class="text-justify">
                 ROBOSE bridges the high-level MLLM and the low-level policy using a learned <ACT> token and linear projection. Prompt tuning allows efficient training without altering MLLM parameters. An auxiliary task ensures the MLLM performs multimodal reasoning by predicting actions directly from its latent embeddings. The policy model adopts a diffusion-based learning mechanism conditioned on visual, proprioceptive, and goal features.
             </p>
-            <p style="text-align: center;"><img src="./assets/robose_teaser.jpg" class="img-responsive"></p>
+            <p style="text-align: center;"><img src="./assets/arch.jpg" class="img-responsive"></p>
+
+            <h3>Approach</h3>
+            <p class="text-justify">
+                We tried different combinations of training methods, and all the models were trained on the ABC split of CALVIN with the original language instruction data. We tested them on split D with the original instruction (CALVIN) and GPT-4 enriched instruction (CALVIN-E), respectively, following the RoboFlamingo \cite{li2023vision} evaluation setting. 
+            </p>
+            <p style="text-align: center;"><img src="./assets/table1.jpg" class="img-responsive"></p>
 
             <h3>Dataset</h3>
             <p class="text-justify">
                 We construct CALVIN-D, an enhanced benchmark built upon CALVIN, introducing five dynamic object movement patterns. This setup evaluates models' capability to generalize in real-time environments.
             </p>
-            <p style="text-align: center;"><img src="./assets/robose_dataset.png" class="img-responsive"></p>
+            <p style="text-align: center;"><img src="./assets/dataset.jpg" class="img-responsive"></p>
 
             <h3>Results</h3>
             <p class="text-justify">
                 ROBOSE outperforms previous methods across all metrics in CALVIN, CALVIN-E (language generalization), and CALVIN-D (dynamic vision generalization). It achieves better success rates with fewer parameters and less training data, validating its data efficiency and robustness.
             </p>
-            <p style="text-align: center;"><img src="./assets/robose_results.png" class="img-responsive"></p>
+            <p style="text-align: center;"><img src="./assets/results.jpg" class="img-responsive"></p>
 
             <h3>Citation</h3>
             <pre><code>@article{Cui2024ROBOSE,
